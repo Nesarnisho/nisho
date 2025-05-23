@@ -1110,6 +1110,28 @@
             const header = document.querySelector('header');
             header.classList.toggle('sticky', window.scrollY > 0);
         });
+
+            // Simple testimonial slider functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const testimonials = document.querySelectorAll('.testimonial-card');
+        let currentTestimonial = 0;
+        
+        function showTestimonial(index) {
+            testimonials.forEach((testimonial, i) => {
+                testimonial.style.display = i === index ? 'block' : 'none';
+            });
+        }
+        
+        // For mobile view - enable sliding
+        if (window.innerWidth < 768) {
+            showTestimonial(currentTestimonial);
+            
+            setInterval(() => {
+                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                showTestimonial(currentTestimonial);
+            }, 5000);
+        }
+    });
     </script>
 </body>
 </html>
